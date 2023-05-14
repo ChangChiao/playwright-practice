@@ -21,6 +21,7 @@
       console.log("login-result", result);
       if (statusCode === 200) {
         goto("/member");
+        localStorage.setItem("user", "admin");
       } else {
         error = true;
       }

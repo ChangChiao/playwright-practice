@@ -3,6 +3,7 @@
   import { browser } from "$app/environment";
   import { tw, apply } from "twind";
   import { worker } from "../mocks/browser";
+  import { onMount } from "svelte";
 
   let error: boolean = false;
   if (import.meta.env.DEV && browser) {
@@ -29,6 +30,12 @@
       console.error(error);
     }
   };
+
+  onMount(async () => {
+    const res = await fetch(`/status`);
+    const result = await res.json();
+    console.log("result", result);
+  });
 </script>
 
 <div class={tw(apply`w-[250px] mx-auto`)}>

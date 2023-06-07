@@ -9,7 +9,7 @@
   if (import.meta.env.DEV && browser) {
     worker.start();
   }
-
+  let alertText = "";
   const inputStyle = tw(apply`rounded-md border-1 border-gray-200 p-2 mb-2`);
   const handleSubmit = async (event: SubmitEvent) => {
     const formEl = event.target as HTMLFormElement;
@@ -34,6 +34,7 @@
   onMount(async () => {
     const res = await fetch(`/status`);
     const result = await res.json();
+    alertText = result.status;
     console.log("result", result);
   });
 </script>
@@ -55,6 +56,7 @@
       type="submit">submit</button
     >
   </form>
+  <p id="text">{alertText}</p>
 </div>
 
 <style>

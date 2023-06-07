@@ -41,7 +41,7 @@ export default defineConfig({
         storageState: "playwright/.auth/user.json",
       },
       dependencies: ["setup"],
-      testIgnore: ["**/login.spec.ts"],
+      testIgnore: ["**/login.spec.ts", "**/interception.spec.ts"],
     },
 
     {

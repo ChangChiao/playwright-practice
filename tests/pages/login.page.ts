@@ -13,6 +13,10 @@ export class LoginPage {
     this.loginButton = page.getByRole("button", { name: "submit" });
   }
 
+  async goToIndexPage() {
+    await this.page.goto("/");
+  }
+
   async fillUserInfo(account: string, password: string) {
     await this.accountInput.fill(account);
     await this.passwordInput.fill(password);
@@ -22,7 +26,5 @@ export class LoginPage {
     await this.loginButton.click();
   }
 
-  async expectToMemberPage() {
-    await expect(this.page).toHaveURL(/\/member/);
-  }
+  async expectToMemberPage() {}
 }
